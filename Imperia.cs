@@ -9,26 +9,26 @@ namespace War.Models
 {
     internal class Imperia : IAllies
     {
-        private int Budget;
-        public int ImpArmyBudget = 1000;
-        private int Resource = 100;
-        private int Industry = 75; // = + 100 budget in year and - 50 resourse
-        private int Army = 100000;
+        public int BudgetImp;
+        public int ImpArmyBudget = 1001;
+        public int ResourceImp = 700;
+        public int IndustryImp = 560; // = + 100 budget in year and - 50 resourse
+        public int Army = 100000;
 
-        public Imperia(int Budget, int ImpArmyBudget, int Resourse, int Industry, int Army) 
+        public Imperia(int BudgetImp, int ImpArmyBudget, int ResourseImp, int IndustryImp, int Army) 
         {
-            this.Budget = Budget;
+            this.BudgetImp = BudgetImp;
             this.Army = Army;
-            this.Resource = Resourse;
-            this.Industry = Industry;
+            this.ResourceImp = ResourseImp;
+            this.IndustryImp = IndustryImp;
             this.ImpArmyBudget = ImpArmyBudget;
             
         }
 
-        public static int MakeBudget(int Industry, int Resourse)
+        public static int MakeBudget(int IndustryImp, int ResourseImp)
         {
-            int Budget = Industry * Resourse;
-            return Budget; // If (Respublica.Budget > Imperia.Budget) { AttacRespublica();}
+            int BudgetImp = IndustryImp * ResourseImp;
+            return BudgetImp; // If (Respublica.BudgetImp > Imperia.BudgetImp) { AttacRespublica();}
         }
 
         public static int MakeArmyBudget(int InfantryBudget, int AviationBudget, int RokcetBudget, int FleetBudget, float Booty)
@@ -55,6 +55,8 @@ namespace War.Models
         {
 
         }
+
+       
 
     }
 }
