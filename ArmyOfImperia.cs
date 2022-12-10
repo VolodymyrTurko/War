@@ -12,31 +12,32 @@ namespace War.Models
     {
         public int ImpInfantry = 90000; // Піхота
         public static int InfantryBudget = 500;  // Бюджет піхоти
-        public const float InfantryBootyCoef = 0.06f;
+        public const float InfantryBootyCoefImp = 0.06f;
         public const float InfantryCoef = 0.15f;
         public int LossesOfInfantryImp = 0;
 
 
         public int ImpAviation = 780;
         public static int AviationBudget = 400;
-        public const float AviationBootyCoef = 0.032f;
+        public const float AviationBootyCoefImp = 0.032f;
         public const float AviationCoef = 0.27f;
         public int LossesOfAviationImp = 0;
 
         public int ImpRocket = 9000;
-        private static int RocketBudget = 600;
-        public const float RocketBootyCoef = 0.0245f;
-        private const float RocketCoef = 0.47f;
+        public static int RocketBudgetImp = 600;
+        public const float RocketBootyCoefImp = 0.0245f;
+        public const float RocketCoefImp = 0.47f;
         public int LossesOfRocketImp = 0;
+        public int RocketImp;
 
         public int ImpFleet = 1000; //Флот
-        private static int FleetBudget = 600;
-        public const float FleetBootyCoef = 0.057f;
+        public static int FleetBudget = 600;
+        public const float FleetBootyCoefImp = 0.057f;
         public const float FleetCoef = 0.3f;
         public float BootyImp;
         public int LossesOfFleetImp = 0;
 
-        public ArmyOfImperia(int budget, int armyBudget, int resourse, int industry, int army, int ImpInfantry, int ImpAviation, int ImpRocket, int ImpFleet) : base(budget, armyBudget, resourse, industry, army)
+        public ArmyOfImperia(int BudgetImp, int ImpArmyBudget, int resourseImp, int industryImp, int army, int ImpInfantry, int ImpAviation, int ImpRocket, int ImpFleet) : base(BudgetImp, ImpArmyBudget, resourseImp, industryImp, army)
         {
             this.ImpInfantry = ImpInfantry;
             this.ImpAviation = ImpAviation;
@@ -55,11 +56,11 @@ namespace War.Models
             Aviation += Aviation;
             return Aviation;
         }
-        public int MakeRocket(int RocketBudget, int RocketCoef)
+        public static int MakeRocketImp(int RocketBudgetImp, float RocketCoefImp)
         {
-            int Rocket = RocketBudget * RocketCoef;
-            Rocket += Rocket;
-            return Rocket;
+            int RocketImp = (int)(RocketBudgetImp * RocketCoefImp);
+           
+            return RocketImp;
         }
         public int MakeFleet(int FleetBudget, int FleetCoef)
         {
@@ -67,9 +68,9 @@ namespace War.Models
             Fleet += FleetCoef;
             return Fleet;
         }
-        public static float MakeBooty(float InfantryBootyCoef, float AviationBootyCoef, float RocketBootyCoef, float FleetBootyCoef, int RespArmyBudget) // Трофеї
+        public static float MakeBooty(float InfantryBootyCoefImp, float AviationBootyCoefImp, float RocketBootyCoefImp, float FleetBootyCoefImp, int RespArmyBudget) // Трофеї
         {
-            float BootyImp = (InfantryBootyCoef + AviationBootyCoef + RocketBootyCoef + FleetBootyCoef) * RespArmyBudget;
+            float BootyImp = (InfantryBootyCoefImp + AviationBootyCoefImp + RocketBootyCoefImp + FleetBootyCoefImp) * RespArmyBudget;
             return (float)BootyImp;
         }
     }
