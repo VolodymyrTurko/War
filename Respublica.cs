@@ -10,7 +10,7 @@ namespace War.Models
     internal class Respublica : IAllies
     {
         private int BudgetOfResp;
-        public int RespArmyBudget = 100;
+        public int RespArmyBudget = 101;
         public int Resource = 50;
         public int Industry = 25; // = + 100 budget in year and - 50 resourse
         public int Army = 50000;
@@ -31,7 +31,7 @@ namespace War.Models
         public static int MakeBudget(int Industry, int Resourse)
         {
             int BudgetOfResp = Industry * Resourse;
-            return BudgetOfResp; // If (Respublica.Budget > Imperia.Budget) { AttacRespublica();}
+            return BudgetOfResp; // If (Respublica.BudgetImp > Imperia.BudgetImp) { AttacRespublica();}
         }
         public static int MakeArmyBudget(int InfantryBudget, int AviationBudget, int RokcetBudget, float Booty)
         {
