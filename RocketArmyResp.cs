@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using War.Models;
+
 
 namespace War.Models
 {
@@ -19,7 +21,7 @@ namespace War.Models
         }
         private static int RocketAttackAvia(int ImpAviation) // атака на Аваційні частини 
         {
-            int MissileSalvoA = ImpAviation / 50;
+            int MissileSalvoA = ImpAviation / 50; // MissileSalvoA - кількість випущених ракет
             return MissileSalvoA;
         }
         private static int RocketAttackRock(int ImpRocket)
@@ -32,18 +34,19 @@ namespace War.Models
             int MissileSalvoF = ImpFleet / 70;
             return MissileSalvoF;
         }
-        public static bool RocketAttack(int ImpArmyBudget, int ImpInfantry, int ImpAviation, int ImpRocket, int ImpFleet, int Rocket)
+        public static int RocketAttack(int ImpArmyBudget, int ImpInfantry, int ImpAviation, int ImpRocket, int ImpFleet, int Rocket)
         {
-            if (ImpArmyBudget >= 10000)
+            if (ImpArmyBudget >= 1000)
             {
                 RocketAttackInf(ImpInfantry);
                 RocketAttackAvia(ImpAviation);
                 RocketAttackRock(ImpRocket);
                 RocketAttackFl(ImpFleet);
-                Rocket = MakeRocket(40, (int)0.4f);
-                Console.WriteLine("After a rocket salvo, the rest of the rockets = " + Rocket);
+                Rocket = MakeRocket(40, (int)0.4f, Rocket);
+                Console.WriteLine("After a rocket salvo, the rest of the rockets in Respublic = " + Rocket);
             }
-            return true;
+            return Rocket;
+            
         }
     }
 }
