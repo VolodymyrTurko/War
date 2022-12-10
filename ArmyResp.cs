@@ -24,17 +24,18 @@ namespace War.Models
         public int LossesOfAviation = 0; // втрати піхоти
         
         public static int RespRocket = 1000;
-        private static int RocketBudget = 40;
+        public static int RocketBudget = 40;
         public const float RocketBootyCoef = 0.014f;
-        private const float RocketCoef = 0.4f;
+        public const float RocketCoef = 0.4f;
         public int LossesOfRocket = 0; // до втрат ракет входить число запущених ракет по ворогу і знищені під час ворожої атаки ракетні сис 
        
-        public static int MissileSalvo;
+        public static int MissileSalvo; // MissileSalvoA - кількість випущених ракет
         public static int MissileSalvoA;
         public  static int MissileSalvoR;
         public static int MissileSalvoF;
+        public int RocketMissileІalvo; // загальна ксть випущених ракет
         public float Booty;
-        public int Rocket;
+        public int Rocket; // Ксть ракет що залишилися після атаки
         public ArmyResp(int armybudget, int resource, int industry, int army, int respinfantry, int respaviation, int resprocket) : base(armybudget, resource, industry, army)
         {
             RespInfantry = respinfantry;
@@ -53,11 +54,12 @@ namespace War.Models
             Aviation += Aviation;
             return Aviation;
         }
-        public static int MakeRocket(int RocketBudget, int RocketCoef)
+        public static int MakeRocket(int RocketBudget, int RocketCoef, int Rocket) // виробництво ракет - витрати на атаки
         {          
-            int Rocket = RocketBudget * RocketCoef;
-            Rocket += Rocket - MissileSalvo - MissileSalvoA - MissileSalvoR - MissileSalvoF;
-            return Rocket;
+            //int Rocket = (RocketBudget * RocketCoef);
+            int RocketMissileІalvo = MissileSalvo + MissileSalvoA + MissileSalvoR + MissileSalvoF; //закетний залп
+            Rocket += RocketBudget * RocketCoef - RocketMissileІalvo;
+            return Rocket; 
         }
        
         public static float MakeBooty(float InfantryBootyCoef, float AviationBootyCoef, float RocketBootyCoef, int ImpArmyBudget) // Трофеї
